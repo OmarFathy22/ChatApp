@@ -1,0 +1,4 @@
+to make the scroll view show all element :
+just give flex:1 to the parent element
+
+to make the drawer work don't forget to add the plugin to babel.js and clear the cache then restart the app
