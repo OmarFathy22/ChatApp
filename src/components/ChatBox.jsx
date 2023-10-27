@@ -57,7 +57,7 @@ const ChatBox = () => {
             photo:item?.photo,
             id:item?.id,
           });
-          NewChat();
+          // NewChat();
         }}
       >
         <View style={styles.Box} >

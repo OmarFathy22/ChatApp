@@ -93,6 +93,7 @@ function MyTobTabs() {
     >
       <TabTop.Screen
         options={{
+          tabBarLabel: "Chat",
           tabBarIcon: ({ color, focused }) => (
             <View style={{ width: 48, height: 48 }}>
               {/* <Ionicons name="call-outline" size={40} color={color} /> */}

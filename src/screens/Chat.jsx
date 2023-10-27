@@ -9,12 +9,13 @@ import { View, Text, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 // import { fromCSS } from "@bacons/css-to-expo-linear-gradient";
 
-
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
 import ChatBox from "../components/ChatBox";
+import Stories from "../components/Stories";
+import IStory from "../components/InstaStory";
 
 const App = () => {
   const [index, setIndex] = useState(0);
@@ -31,6 +32,9 @@ const App = () => {
   // renders
   return (
     <>
+      <View style={{ flex: 1 }}>
+        <IStory />
+      </View>
       <BottomSheetModalProvider>
         {/* temporary */}
         <LinearGradient colors={["black", "#0D1329"]} style={{ flex: 1 }}>
@@ -48,7 +52,7 @@ const App = () => {
             }}
             handleStyle={{
               // display: index === 2 ? "none" : "block",
-              display:"none",
+              display: "none",
             }}
             enablePanDownToClose={false}
           >

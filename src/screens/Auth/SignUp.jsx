@@ -30,27 +30,6 @@ const AddNewUser = async (uid, userData) => {
       "https://res.cloudinary.com/docirki1d/image/upload/v1698149317/fiverr/no_avatar_zh6adx.png",
   });
 };
-const SignUp = (userData) => {
-  const { email, password } = userData;
-  const data = true;
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed up
-      const user = userCredential.user;
-      Alert.alert("Success", "User Created Successfully");
-      AddNewUser(user.uid, userData);
-
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      Alert.alert("Error", errorMessage);
-      data = false;
-      // ..
-    });
-    return data;
-};
 
 const Example = () => {
   const navigation = useNavigation();
@@ -69,11 +48,27 @@ const Example = () => {
     setUserData({ ...userData, name: params });
   };
   const handleSignUp = () => {
-    if(SignUp(userData))
-    {
-      navigation.navigate("Chat");
-    }
-    
+    const SignUp = (userData) => {
+      const { email, password } = userData;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          Alert.alert("Success", "User Created Successfully");
+          AddNewUser(user.uid, userData);
+          navigation.navigate("Chat");
+
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          Alert.alert("Error", errorMessage);
+
+          // ..
+        });
+    };
+    SignUp(userData);
   };
   return (
     <Center w="100%">

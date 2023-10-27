@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, StatusBar,StyleSheet } from "react-native";
+import { View, StatusBar, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CertainChat from "./src/screens/CertainChat";
 import { FontAwesome } from "@expo/vector-icons";
@@ -24,14 +24,14 @@ export default function App() {
           initialRouteName="Home"
         >
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="MainContent" component={MainContent} />
+          {/* <Stack.Screen name="MainContent" component={MainContent} />
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen
             // options={}
             name="CertainChat"
             component={CertainChat}
-          />
+          /> */}
         </Stack.Navigator>
       </View>
     </NavigationContainer>
@@ -45,5 +45,4 @@ const styles = StyleSheet.create({
     flex: 1,
     position: "relative",
   },
-
 });
