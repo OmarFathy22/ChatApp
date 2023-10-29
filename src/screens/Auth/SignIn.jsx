@@ -52,6 +52,8 @@ const Example = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          console.log(userData.email, userData.password);
+          console.log(errorCode, errorMessage);
           Alert.alert("Error", errorMessage);
         });
     };

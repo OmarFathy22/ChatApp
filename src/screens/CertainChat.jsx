@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ScrollView, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  ActivityIndicator,
+} from "react-native";
 import { COLORS } from "../utils/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -21,6 +28,7 @@ const CertainChat = ({ navigation, route }) => {
   const [chatId2, setChatId2] = useState("");
   const [user1, setUser1] = useState("");
   const [user2, setUser2] = useState("");
+  const [loading, setLoading] = useState(true);
   // const [loading, setLoading] = useState(true);
   const obj = route.params;
   useEffect(() => {
@@ -45,32 +53,11 @@ const CertainChat = ({ navigation, route }) => {
     } else {
       console.log("No Chat Exist");
     }
+    setLoading(false);
   };
   if (user1 && user2) {
     GetData();
   }
-  // console.warn(chatId < chatId2)
-  // console.warn(chatId , chatId2)
-  // console.log(chatId, chatId2);
-  // const GetData2 = async () => {
-  //   const docRef = doc(db, "chat", chatId2);
-  //   const docSnap = await getDoc(docRef);
-  //   if (docSnap.exists()) {
-  //     setChat(docSnap.data()?.messages);
-  //   } else {
-  //     // docSnap.data() will be undefined in this case
-  //   }
-  // };
-  // if (chatId) {
-  //   GetData1();
-  // }
-  // else if(chatId2){
-  //     GetData2();
-
-  // }
-  // else{
-  //     // checkChatExist();
-  // }
 
   navigation.setOptions({
     headerShown: true,
@@ -112,7 +99,13 @@ const CertainChat = ({ navigation, route }) => {
       setChat([NewMessage]);
     }
   };
-
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#020343" />
+      </View>
+    );
+  }
   return (
     <View style={{ flex: 1, backgroundColor: "#a5b1d91a" }}>
       <ScrollView>

@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     alignItems: "center",
+    marginBottom: 105,
   },
   backgroundGradient: { flex: 1 },
 });
